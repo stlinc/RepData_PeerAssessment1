@@ -5,10 +5,36 @@ output:
     keep_md: true
 ---
 
+## Data pre-processing
+Loading the data
+```{r cache=TRUE}
+activity <- read.csv("./activity.csv")
+```
+Explore the data
+```{r}
+summary(activity)
+str(activity)
+head(activity)
+```
+Count number of records with missing data
+```{r}
+sum(is.na(activity$steps))
+```
 
-## Loading and preprocessing the data
+Calculate the total number of steps taken per day
+```{r}
+DailyTotalSteps <- tapply(activity$steps, activity$date, sum)
+```
+Visualize the trend
+```{r}
+p <- barplot(DailyTotalSteps)
+```
 
-
+Calculate and report the mean and median of the total number of steps taken per day
+```{r}
+summary(DailyTotalSteps)
+```
+The median total number of steps per day is 10,760, whereas the mean is 10,770.
 
 ## What is mean total number of steps taken per day?
 
