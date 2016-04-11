@@ -27,7 +27,7 @@ DailyTotalSteps <- tapply(activity$steps, activity$date, sum)
 ```
 Visualize the trend
 ```{r}
-p <- barplot(DailyTotalSteps)
+p <- barplot(DailyTotalSteps, xlab="Date", ylab="total number of steps taken per day")
 ```
 
 Calculate and report the mean and median of the total number of steps taken per day
@@ -36,13 +36,21 @@ summary(DailyTotalSteps)
 ```
 The median total number of steps per day is 10,760, whereas the mean is 10,770.
 
-## What is mean total number of steps taken per day?
+Compute the average number of steps for every interval across Oct. and Nov.
+```{r}
+meanStepsByInterval <- tapply(activity$steps, activity$interval, na.rm = TRUE, mean)
+```
+Visualize the trend
+```{r}
+g <- plot(meanStepsByInterval ~ names(meanStepsByInterval), type = "l", xlab="5-min Interval/day", ylab="mean number of steps taken per 5-min interval")
+```
 
-
-
-## What is the average daily activity pattern?
-
-
+Check when average number of steps peaks.
+```{r}
+peakElement <- which.max(meanStepsByInterval)
+names(meanStepsByInterval)[peakElement]
+```
+The step activities peak at around 8:35 am in the morning.
 
 ## Imputing missing values
 
