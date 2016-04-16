@@ -32,9 +32,9 @@ p <- barplot(DailyTotalSteps, xlab="Date", ylab="total number of steps taken per
 
 Calculate and report the mean and median of the total number of steps taken per day
 ```{r}
-summary(DailyTotalSteps)
+mean(DailyTotalSteps, na.rm=TRUE); median(DailyTotalSteps, na.rm=TRUE)
 ```
-The median total number of steps per day is 10,760, whereas the mean is 10,770.
+The mean total number of steps per day is 10,766, whereas the median is 10,765.
 
 Compute the average number of steps for every interval across Oct. and Nov.
 ```{r}
