@@ -27,7 +27,7 @@ DailyTotalSteps <- tapply(activity$steps, activity$date, sum)
 ```
 Visualize the trend.
 ```{r}
-p <- barplot(DailyTotalSteps, xlab="Date", ylab="total number of steps taken per day")
+p <- hist(DailyTotalSteps, breaks = 20, main="Total number of steps taken each day", xlab=" Number of steps", col="red")
 ```
 
 Calculate and report the mean and median of the total number of steps taken per day.
@@ -80,9 +80,9 @@ for (i in rowNA) {
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 ```{r}
 par(mfrow=c(1,2))
-p <- barplot(DailyTotalSteps, xlab="Date", ylab="total number of steps taken per day, with missing values")
+p <- hist(DailyTotalSteps, main="# steps/day, with missing values", breaks = 20, ylim = c(1,20), xlab=" Number of steps", col="red")
 newDailyTotalSteps <- tapply(newActivity$steps, newActivity$date, sum)
-p <- barplot(newDailyTotalSteps, xlab="Date", ylab="total number of steps taken per day, with imputed values")
+p <- hist(newDailyTotalSteps, main="# steps/day, with imputed values", breaks = 20, ylim = c(1,20), xlab=" Number of steps", col="red")
 ```
 
 Calculate and report the mean and median total number of steps taken per day.

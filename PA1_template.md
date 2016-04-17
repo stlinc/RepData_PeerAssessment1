@@ -65,7 +65,7 @@ DailyTotalSteps <- tapply(activity$steps, activity$date, sum)
 Visualize the trend.
 
 ```r
-p <- barplot(DailyTotalSteps, xlab="Date", ylab="total number of steps taken per day")
+p <- hist(DailyTotalSteps, breaks = 20, main="Total number of steps taken each day", xlab=" Number of steps", col="red")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)
@@ -145,9 +145,9 @@ for (i in rowNA) {
 
 ```r
 par(mfrow=c(1,2))
-p <- barplot(DailyTotalSteps, xlab="Date", ylab="total number of steps taken per day, with missing values")
+p <- hist(DailyTotalSteps, main="# steps/day, with missing values", breaks = 20, ylim = c(1,20), xlab=" Number of steps", col="red")
 newDailyTotalSteps <- tapply(newActivity$steps, newActivity$date, sum)
-p <- barplot(newDailyTotalSteps, xlab="Date", ylab="total number of steps taken per day, with imputed values")
+p <- hist(newDailyTotalSteps, main="# steps/day, with imputed values", breaks = 20, ylim = c(1,20), xlab=" Number of steps", col="red")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)
